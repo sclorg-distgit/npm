@@ -4,21 +4,24 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:       %{?scl_prefix}npm
-Version:    1.4.28
-Release:    5%{?dist}
+Version:    2.14.13
+Release:    6%{?dist}
 Summary:    Node.js Package Manager
 License:    Artistic 2.0
 Group:      Development/Tools
 URL:        http://npmjs.org/
 #stripped sources are created by script,
 #we remove badly licensed web fonts from documentation
-#http://registry.npmjs.org/%{npm_name}/-/%{npm_name}-%{version}.tgz
-Source0:    npm-1.4.28-stripped.tar.gz
+#http://registry.npmjs.org/%%{npm_name}/-/%%{npm_name}-%%{version}.tgz
+Source0:    npm-2.14.13-stripped.tar.gz
 BuildRoot:  %{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:  noarch
 ExclusiveArch: %{nodejs_arches} noarch
 BuildRequires: %{?scl_prefix}nodejs-devel
 %{?scl:Requires: %{scl}-runtime}
+
+
+%{?scl:Obsoletes: %{scl}-nodejs-npmconf}
 
 %description
 npm is a package manager for node.js. You can use it to install and publish your
@@ -29,6 +32,28 @@ node programs. It manages dependencies and does other cool stuff.
 
 %nodejs_fixdep request '>2.16 <3'
 %nodejs_fixdep columnify 1.3.2
+%nodejs_fixdep lockfile '>= 1.0.0'
+%nodejs_fixdep readable-stream '>= 2.0.2'
+%nodejs_fixdep once '>= 1.3.0'
+%nodejs_fixdep github-url-from-username-repo '>= 1.0.0'
+%nodejs_fixdep abbrev '>= 1.0.5'
+%nodejs_fixdep write-file-atomic '>= 1.1.2'
+%nodejs_fixdep fstream-npm '>= 1.0.1'
+%nodejs_fixdep block-stream '>= 0.0.7'
+%nodejs_fixdep readable-stream '>= 2.0.2'
+%nodejs_fixdep uid-number '>= 0.0.5'
+%nodejs_fixdep retry '>= 0.6.0'
+%nodejs_fixdep cmd-shim '>= 2.0.0'
+%nodejs_fixdep read '>= 1.0.5'
+%nodejs_fixdep fs-write-stream-atomic '>= 1.0.3'
+%nodejs_fixdep inherits '>= 2.0.0'
+%nodejs_fixdep npm-user-validate '>= 0.1.1'
+%nodejs_fixdep dezalgo '>= 1.0.2'
+%nodejs_fixdep ini '>= 1.2.0'
+%nodejs_fixdep mkdirp '>= 0.5.0'
+%nodejs_fixdep fstream '>= 1.0.3'
+%nodejs_fixdep fs-vacuum '>= 1.2.6'
+
 #remove bundled modules
 rm -rf node_modules
 
@@ -90,6 +115,10 @@ rm -rf %{buildroot}
 %doc AUTHORS man doc html README.md LICENSE
 
 %changelog
+* Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 2.14.13-6
+- Rebase to new upstream version
+- https://github.com/npm/npm/releases/tag/v2.14.13
+
 * Wed Sep 16 2015 Tomas Hrcka <thrcka@redhat.com> - 1.4.28-5
 - Resolves RHBZ#1082002
 
