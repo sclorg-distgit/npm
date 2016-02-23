@@ -5,7 +5,7 @@
 
 Name:       %{?scl_prefix}npm
 Version:    2.14.13
-Release:    6%{?dist}
+Release:    8%{?dist}
 Summary:    Node.js Package Manager
 License:    Artistic 2.0
 Group:      Development/Tools
@@ -53,6 +53,7 @@ node programs. It manages dependencies and does other cool stuff.
 %nodejs_fixdep mkdirp '>= 0.5.0'
 %nodejs_fixdep fstream '>= 1.0.3'
 %nodejs_fixdep fs-vacuum '>= 1.2.6'
+%nodejs_fixdep semver '>= 5.1.0'
 
 #remove bundled modules
 rm -rf node_modules
@@ -115,6 +116,12 @@ rm -rf %{buildroot}
 %doc AUTHORS man doc html README.md LICENSE
 
 %changelog
+* Wed Feb 17 2016 Tomas Hrcka <thrcka@redhat.com> - 2.14.13-8
+- Fix dependency on semver
+
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 2.14.13-7
+- Rebuilt with fixed requires
+
 * Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 2.14.13-6
 - Rebase to new upstream version
 - https://github.com/npm/npm/releases/tag/v2.14.13
