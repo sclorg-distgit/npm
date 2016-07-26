@@ -5,7 +5,7 @@
 
 Name:       %{?scl_prefix}npm
 Version:    2.14.13
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Node.js Package Manager
 License:    Artistic 2.0
 Group:      Development/Tools
@@ -46,7 +46,7 @@ node programs. It manages dependencies and does other cool stuff.
 %nodejs_fixdep cmd-shim '>= 2.0.0'
 %nodejs_fixdep read '>= 1.0.5'
 %nodejs_fixdep fs-write-stream-atomic '>= 1.0.3'
-%nodejs_fixdep inherits '>= 2.0.0'
+%nodejs_fixdep inherits '2.0.0'
 %nodejs_fixdep npm-user-validate '>= 0.1.1'
 %nodejs_fixdep dezalgo '>= 1.0.2'
 %nodejs_fixdep ini '>= 1.2.0'
@@ -115,7 +115,7 @@ rm -rf %{buildroot}
 %doc AUTHORS man doc html README.md LICENSE
 
 %changelog
-* Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 2.14.13-6
+* Thu Feb 11 2016 Tomas Hrcka <thrcka@redhat.com> - 2.14.13-7
 - Rebase to new upstream version
 - https://github.com/npm/npm/releases/tag/v2.14.13
 
